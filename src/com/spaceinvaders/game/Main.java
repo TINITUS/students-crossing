@@ -74,7 +74,7 @@ public class Main {
     }
 
     private static void render(double delta, int fps) {
-        int startPosLine = 10;
+        
         ConsoleGraphics.clearCons();
         ConsoleGraphics.setCols(78);
         ConsoleGraphics.setRows(28);
