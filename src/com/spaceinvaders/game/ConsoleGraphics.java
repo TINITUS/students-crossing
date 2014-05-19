@@ -106,23 +106,13 @@ class ConsoleGraphics {
     }
     
     public static void drawAtPosition(int row, int col, char whatToDraw) {                
-        for(int i =0; i < row; i++){
-            System.out.print(ESC+"B");
-        }
-        for(int j = 0; j < col;j++){
-            System.out.print(ESC + "C");
-        }
+        moveTo(row, col);
         System.out.print(whatToDraw);
         restoreCursor();
     }
     
     public static void displayText(int row, int col, String text){
-        for(int i =0; i < row; i++){
-            System.out.print(ESC + "B");
-        }
-        for(int j = 0; j < col;j++){
-            System.out.print(ESC + "C");
-        }
+        moveTo(row, col);
         System.out.print(text);
     }
 
@@ -132,5 +122,14 @@ class ConsoleGraphics {
 
     private static void restoreCursor() {
         System.out.print(ESC + "H");        
+    }
+    
+    private static void moveTo(int row, int col){
+        for(int i =0; i < row; i++){
+            System.out.print(ESC+"B");
+        }
+        for(int j = 0; j < col;j++){
+            System.out.print(ESC + "C");
+        }
     }
 }
