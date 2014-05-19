@@ -16,12 +16,12 @@ class ConsoleGraphics {
     private static int cols = 0;
     private static int rows = 0;
 
-    public ConsoleGraphics(int initCols, int initRows){
-        cols = initCols;
-        rows = initRows;
-        drawFrame();   
-        restoreCursor();
-    }
+//    public ConsoleGraphics(int initCols, int initRows){
+//        cols = initCols;
+//        rows = initRows;
+//        drawFrame();   
+//        restoreCursor();
+//    }
     public static void drawFrame(){
         char hLine = '\u2500';
         char vLine = '\u2502';
@@ -114,6 +114,7 @@ class ConsoleGraphics {
     public static void displayText(int row, int col, String text){
         moveTo(row, col);
         System.out.print(text);
+        restoreCursor();
     }
 
     public static void clearCons(){

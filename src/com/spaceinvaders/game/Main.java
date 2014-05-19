@@ -14,6 +14,8 @@ import java.util.Scanner;
  */
 public class Main {
 
+    private static ShipEntity p = new ShipEntity(37);
+    private static ConsoleGraphics g = new ConsoleGraphics();
     /**
      * @param args the command line arguments
      */
@@ -34,7 +36,7 @@ public class Main {
         int currentCycle = 0;
         int fps = 0, lastFpsTime = 0;
         long lastLoopTime = System.currentTimeMillis();
-        final int TARGET_FPS = 1;
+        final int TARGET_FPS = 5;
         final long OPTIMAL_TIME = 1000 / TARGET_FPS; 
         //char input;
         while(runing){          
@@ -56,37 +58,27 @@ public class Main {
             // update our FPS counter if a second has passed since
             // we last recorded
             if (lastFpsTime >= OPTIMAL_TIME)
-            {
+            {               
+               tick();
                render(delta, fps);
-               //System.out.println(ConsoleGraphics.ESC + "32m (FPS: "+fps+")" + ConsoleGraphics.ESC + "37m");
+               System.out.println(ConsoleGraphics.ESC + "32m (FPS: "+fps+")" + ConsoleGraphics.ESC + "37m");
                lastFpsTime = 0;
                fps = 0;
-            }
-            //render(delta);           
-            
-            
-            if(currentCycle == cycles){
-                runing = false;
-                 System.out.println((char)8);
-            }
-        }
-        
+            }                                               
+        }        
     }
 
-    private static void render(double delta, int fps) {
-        
-        ConsoleGraphics.clearCons();
-        ConsoleGraphics.setCols(78);
-        ConsoleGraphics.setRows(28);
-        ConsoleGraphics.drawFrame();
-        ConsoleGraphics.darwRectangle(1, 1, 1, 1);
-        ConsoleGraphics.drawAtPosition(2, 2, '\u250C');
-        ConsoleGraphics.drawAtPosition(2, 3, '\u2500');
-        ConsoleGraphics.drawAtPosition(2, 4, '\u2510');
-        ConsoleGraphics.drawAtPosition(3, 2, '\u2514');
-        ConsoleGraphics.drawAtPosition(3, 3, '\u2500');
-        ConsoleGraphics.drawAtPosition(3, 4, '\u2518');
-        ConsoleGraphics.drawLine(5, 10, 5, 20);
-        ConsoleGraphics.displayText(1, 3, " "+delta);
+    private static void render(double delta, int fps) {                        
+        //UI render
+        g.clearCons();                
+        g.setCols(78);
+        g.setRows(28);
+        g.drawFrame();        
+        //player render
+        p.render();       
+    }
+
+    private static void tick() {
+        p.tick();
     }
 }
