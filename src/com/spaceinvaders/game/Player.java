@@ -1,30 +1,42 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.spaceinvaders.game;
 
 /**
  *
  * @author Toshiba
  */
-public class ShipEntity {
+public class Player {
     private int x; 
     private static final int y = 27; 
     private final String tex  = "-||-";
     private static boolean goLeft = true;
     private static boolean goRight = false;
         
-    public ShipEntity(int x){
-        this.x = x;                              
-    }
+    // zakomentirah konstruktura za da ne mi dava error zasega
+    // i ne sam siguren, dali nqma da ti trqbwa posle
+//    public Player(int x){
+//        this.x = x;                              
+//    }
     
     public int getX(){
         return x;
     }
         
+    public void moveUp() {
+        
+    } 
+    
+    public void moveDown() {
+        
+    } 
+    
+    public void moveLeft() {
+        
+    } 
+    
+    public void moveRight() {
+        
+    }
+    
     public void tick(){
         System.out.print(x);
         if( x >= 73 && !goRight){
