@@ -19,6 +19,9 @@ public class Player {
     public int getX(){
         return x;
     }
+    public int getY(){
+        return y;
+    }
         
     public void moveUp() {        
         if(this.y-1 >= 1){

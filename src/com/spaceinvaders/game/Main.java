@@ -22,25 +22,7 @@ public class Main {
      * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {      
-        Screens.printMenu();        
-        Scanner input = new Scanner(System.in);
-        int choice = input.nextInt();              
-        switch (choice) {
-            case 1:
-               gameStart();
-               break;
-            case 3:
-                Screens.exitGame();
-                //System.exit(0);
-                break;
-            case 2:
-                Screens.about();
-                break;
-            default:
-                System.out.println("Invalid choice");
-                Screens.printMenu();
-                break;
-        }
+        gameMain();
     }
 
     private static void gameStart() {
@@ -54,7 +36,7 @@ public class Main {
         //init entities - player, obstacles, target
         Player p = new Player();
         Matrix obst = new Matrix();
-        Target goal = new Target(g);
+        Target goal = new Target();
         
         
         //char input;
@@ -73,7 +55,45 @@ public class Main {
             }
         }
     }
-
+    
+    private static void gameMain(){
+        Screens.printMenu();        
+        Scanner input = new Scanner(System.in);
+        int choice = input.nextInt();              
+        switch (choice) {
+            case 1:
+               gameStart();
+               break;
+            case 3:
+                Screens.exitGame();
+                //System.exit(0);
+                break;
+            case 2:
+                gameAbout();
+                break;
+            default:
+                System.out.println("Invalid choice");
+                Screens.printMenu();
+                break;
+        }
+    }
+    
+    private static void gameAbout() {
+        Screens.about();
+        Scanner input = new Scanner(System.in);
+        int choise = input.nextInt();
+        switch(choise){
+            case 1:
+                gameMain();
+                break;
+            default:
+                Screens.exitGame();
+                //System.exit(0);
+                break;
+        }
+                
+    }
+    
     private static void render(Matrix obst, Player p, Target goal) {
         //UI render        
         g.clearCons();

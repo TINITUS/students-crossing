@@ -57,20 +57,18 @@ public class Screens {
         System.out.println("# *   *   *   *  1. Find the goal \' [ ] \' Avoid bstacles \'@\'  *   *   *   *  #");
         System.out.println("#   *   *   *    2. Write a Sequense of moves to get the student there  *   *#");
         System.out.println("# *   *   *   *  3. Press Enter to execute *  *   *   *   *   *   *   *   *  #");
-        System.out.println("#   *   *   *   *4. Win! or Loose! - never mind. Just have a pint!  *   *   *#");
+        System.out.println("#   *   *   *   *4. Win! or Lose! - never mind. Just have a pint!   *   *   *#");
         System.out.println("# *    *   *  *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *  #");
         System.out.println("#   *   *   *   *   *	*   *   *   *   *   *   *   *   *   *   *   *   *   *#");
         System.out.println("# *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *  #");
         System.out.println("#   *	*   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *#");
         System.out.println("# *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *  #");
-        System.out.println("#   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *#");
+        System.out.println("#   *   *   *   Input 1 to go back or 0 to Exit *   *   *   *   *   *   *   *#");
         System.out.println("# *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *  #");
         System.out.println("#   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *#");
         System.out.println("# *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *  #");
         System.out.println("#   *    *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *  *#");
-        System.out.println("##############################################################################");
-        Scanner input = new Scanner(System.in);
-        int choise = input.nextInt();       
+        System.out.println("##############################################################################");        
     }
 
     public static void exitGame() {
