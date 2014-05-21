@@ -5,61 +5,68 @@ package com.spaceinvaders.game;
  * @author Toshiba
  */
 public class Player {
-    private int x; 
-    private static final int y = 27; 
-    private final String tex  = "-||-";
-    private static boolean goLeft = true;
-    private static boolean goRight = false;
+    private static int x = Matrix.randomWithRange(1, ConsoleGraphics.getCols()); 
+    private static  int y = Matrix.randomWithRange(1, ConsoleGraphics.getRows()); 
+    private final String tex;   
         
-    // zakomentirah konstruktura za da ne mi dava error zasega
-    // i ne sam siguren, dali nqma da ti trqbwa posle
-//    public Player(int x){
-//        this.x = x;                              
-//    }
+    /**
+     *
+     */
+    public Player(){
+        this.tex = "P";        
+    }
     
     public int getX(){
         return x;
     }
         
-    public void moveUp() {
+    public void moveUp() {        
+        if(this.y-1 >= 1){
+            this.y-=1;
+        }else{
+            //fail!!
+        }
         
     } 
     
     public void moveDown() {
+        if(this.y+1 <= ConsoleGraphics.getRows()-2){
+            this.y+=1;    
+        }else{
+            //fail!!!
+        }
         
     } 
     
     public void moveLeft() {
-        
+        if(this.x-1 >= 1){
+            this.x--;
+        } else {  
+            //fail!!!
+        }
+        this.x-=1;
     } 
     
     public void moveRight() {
+        if(this.x+1 <= ConsoleGraphics.getCols()-2){
+            this.x++;
+        } else {  
+            //fail!!!
+        }
+    }
         
-    }
-    
-    public void tick(){
-        System.out.print(x);
-        if( x >= 73 && !goRight){
-            goLeft = false;
-            goRight = true;
-        }else if(x <= 1 && !goLeft){
-            goRight = false;
-            goLeft = true;
-        }
-        if(goLeft){
-            x+=2;
-        }else if(goRight){
-            x-=2;
-        }
-    }
-    
-    public void render(){
+    public void render(){        
         ConsoleGraphics.displayText(y, x, tex);
     }
     
     public int setX(int x){
         this.x = x;
         return x;
+    }
+    
+    public int setY(int y){
+        this.y = y;
+        return y;
     }
         
 }

@@ -125,7 +125,8 @@ class ConsoleGraphics {
         System.out.print(ESC + "H");        
     }
     
-    private static void moveTo(int row, int col){
+    public static void moveTo(int row, int col){
+        restoreCursor();
         for(int i =0; i < row; i++){
             System.out.print(ESC+"B");
         }
