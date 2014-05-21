@@ -20,12 +20,11 @@ public class Target {
     
     /**
      *  Constructor
-     * @param g - ConsoleGraphics object
      */
     public Target(){
         x = Matrix.randomWithRange(1, ConsoleGraphics.getCols());
         y = Matrix.randomWithRange(1, ConsoleGraphics.getRows());
-        this.tex = "[ ]";
+        this.tex = ConsoleGraphics.ESC+"31m"+"[ ]"+ConsoleGraphics.ESC+"37m";
     } 
     
     /**
