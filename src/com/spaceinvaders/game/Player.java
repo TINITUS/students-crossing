@@ -30,10 +30,16 @@ public class Player {
     }
         
     public void moveUp(){  
+        
         boolean checkWithObstacle = Collisions.checkWithObstacle(Matrix.obstacles, x, y-1 );
-        if((y-1 >= 1) && !checkWithObstacle){             
+        if((y-1 >= 1) && !checkWithObstacle){            
             clearPlayer();
             this.y-=1;
+            
+            boolean checkWithTarget = Collisions.checkWithTarget(Target.getX(),Target.getY(), x, y-1);                
+            if(checkWithTarget){
+                win();
+            }
             render();
         }else{
             failed();
@@ -41,33 +47,49 @@ public class Player {
     } 
     
     public void moveDown() {
+        
         boolean checkWithObstacle = Collisions.checkWithObstacle(Matrix.obstacles, x, y+1 );
         if((y+1 <= ConsoleGraphics.getRows()-1)&& !checkWithObstacle){
             clearPlayer();
             this.y+=1;    
+            
+            boolean checkWithTarget = Collisions.checkWithTarget(Target.getX(),Target.getY(), x, y+1);        
+            if(checkWithTarget){
+                win();
+            }
             render();
         }else{
             failed();
-        }
-        
+        }        
     } 
     
     public void moveLeft() {
+        
         boolean checkWithObstacle = Collisions.checkWithObstacle(Matrix.obstacles, x-1, y );
         if(x-1 >= 1 && !checkWithObstacle){            
             clearPlayer();            
             this.x--;
+            
+            boolean checkWithTarget = Collisions.checkWithTarget(Target.getX(),Target.getY(), x-1, y );        
+            if(checkWithTarget){
+                win();
+            }
             render();
         } else {  
            failed();
         }        
     } 
     
-    public void moveRight() {
+    public void moveRight() {        
         boolean checkWithObstacle = Collisions.checkWithObstacle(Matrix.obstacles, x+1, y );
         if((x+1 <= ConsoleGraphics.getCols()-1) && !checkWithObstacle){
             clearPlayer();
             this.x++;
+            
+            boolean checkWithTarget = Collisions.checkWithTarget(Target.getX(),Target.getY(), x+1, y );
+            if(checkWithTarget){
+                win();
+            }
             render();
         } else {  
            failed();
@@ -92,7 +114,12 @@ public class Player {
         ConsoleGraphics.drawAtPosition(this.y, this.x, ' ');
     }
     
-    private void failed(){
+    private void win(){
+        ConsoleGraphics.clearCons();
+        Screens.winScreen();
+    }
+    
+    protected static void failed(){
         ConsoleGraphics.displayText(29, 2, "Failed. Try again?(Y/N)");
         Scanner input = new Scanner(System.in);
         String answer = input.nextLine();

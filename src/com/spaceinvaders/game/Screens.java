@@ -42,6 +42,35 @@ public class Screens {
         System.out.println("#   *    *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *  *#");
         System.out.println("##############################################################################");
     }
+    
+        public static void winScreen(){
+        ConsoleGraphics.clearCons();
+        System.out.println("##############################################################################");
+        System.out.println("#   *   *  *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *    *#");
+        System.out.println("# *   *  _  _  __  _  _    __  __   __   ___  ___    __  ____  _  *   *   *  #");
+        System.out.println("#   *   ( \\/ )/  \\( )( )  (  \\/  ) (  ) (   \\(  _)  (  )(_  _)/ \\  *   *#");
+        System.out.println("# *   *  \\  /( () ))()(    )    (  /__\\  ) ) )) _)   )(   )(  \\_/      *  #"); 
+        System.out.println("#   *   (__/  \\__/ \\__/   (_/\\/\\_)(_)(_)(___/(___)  (__) (__) (_)   *   *#");
+        System.out.println("# *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *  #");
+        System.out.println("#   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *#");            
+        System.out.println("# *    *   *  *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *  #");
+        System.out.println("#   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *#");
+        System.out.println("# *    *   *  *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *  #");
+        System.out.println("#   *   *   *   *   * Press 1 to continue and 0 to exit *   *   *   *   *   *#");
+        System.out.println("# *    *   *  *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *  #");
+        System.out.println("#   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *#");
+        System.out.println("# *    *   *  *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *  #");
+        System.out.println("#   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *#");
+        System.out.println("# *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *  #");
+        System.out.println("#   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *#");
+        System.out.println("# *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *  #");
+        System.out.println("#   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *#");
+        System.out.println("# *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *  #");
+        System.out.println("#   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *#");
+        System.out.println("# *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *  #");
+        System.out.println("#   *    *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *  *#");
+        System.out.println("##############################################################################");
+    }
     public static void about() {
         ConsoleGraphics.clearCons();
         System.out.println("##############################################################################");

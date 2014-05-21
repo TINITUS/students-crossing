@@ -28,8 +28,8 @@ public class Main {
     }
 
     protected static void gameStart() {
-        g.setCols(78);
-        g.setRows(24);
+        g.setCols(20);
+        g.setRows(20);
         g.clearCons();        
         g.drawFrame();
         
@@ -49,29 +49,11 @@ public class Main {
         String moveSequence;
         Scanner scanIn = new Scanner(System.in);            
         moveSequence = scanIn.nextLine();
-        //loop to update player state as everything else is static
-//        runing = true;
-//        int fps = 0;
-//        int lastFpsTime = 0;
-//        long lastLoopTime = System.currentTimeMillis();
-//        final int TARGET_FPS = 5;
-//        final long OPTIMAL_TIME = 1000 / TARGET_FPS;
-//        
-//        //char input;
-//        while (runing) {
-//            long now = System.currentTimeMillis();
-//            long updateLength = now - lastLoopTime;
-//            lastLoopTime = now;
-//            lastFpsTime += updateLength;
-//            fps++;
-//
-//            if (lastFpsTime >= OPTIMAL_TIME) { 
-//                render(p, moveSequence);                
-//                lastFpsTime = 0;
-//                fps = 0;
-//            }
-//        }
-        for (int i = 0; i < moveSequence.length(); i++) {            
+        
+        for (int i = 0; i <= moveSequence.length(); i++) {            
+            if(i == moveSequence.length()){
+                Player.failed();
+            }
             char c = moveSequence.charAt(i);     
             if (c != 'j' && c != 'k' && c != 'i' && c != 'm') {
                 break;              
@@ -94,19 +76,7 @@ public class Main {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-//    private static void render(Player p, String moveSeq) {
-//        //UI render                       
-//        
-//        //entity renders
-//        //goal.render(g);
-//        //obst.render(g);
-//        //p.render();
-//        
-//        
-//        
-//    }
-    
+        
     protected static void gameMain() throws InterruptedException{
         Screens.printMenu();        
         Scanner input = new Scanner(System.in);

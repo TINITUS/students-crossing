@@ -14,17 +14,18 @@ import java.util.logging.Logger;
  * @author Toshiba
  */
 public class Target {
-    private final int x;
-    private final int y;
-    private final String tex;
+    private static int x;
+    private static int y;
+    private static String tex;
     
     /**
      *  Constructor
      */
     public Target(){
-        x = Matrix.randomWithRange(1, ConsoleGraphics.getCols());
-        y = Matrix.randomWithRange(1, ConsoleGraphics.getRows());
-        this.tex = ConsoleGraphics.ESC+"31m"+"[ ]"+ConsoleGraphics.ESC+"37m";
+        x = Matrix.randomWithRange(1, ConsoleGraphics.getCols()-2);
+        y = Matrix.randomWithRange(1, ConsoleGraphics.getRows()-1);
+            
+        this.tex = ConsoleGraphics.ESC+"31m"+"0"+ConsoleGraphics.ESC+"37m";
     } 
     
     /**
@@ -34,11 +35,11 @@ public class Target {
     public void render(ConsoleGraphics g){         
         g.displayText(this.y, this.x, tex);
     }  
-    public int getX(){
+    public static int getX(){
         return x;
     }
     
-    public int getY(){
+    public static int getY(){
         return y;
     }
 }

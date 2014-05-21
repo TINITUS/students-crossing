@@ -13,9 +13,9 @@ public class Matrix {
     * Constructor for Matrix class
     */
     public Matrix(){
-        for(int o = 0; o <= 100; o++){
-            int randomRow = randomWithRange(1, 24);
-            int randomCol = randomWithRange(1, 78);
+        for(int o = 0; o <= 10; o++){
+            int randomRow = randomWithRange(1, ConsoleGraphics.getRows());
+            int randomCol = randomWithRange(1, ConsoleGraphics.getCols());
             for(int j = 0; j < obstacles.length;j++){
                 if(j == randomRow){
                     for(int i = 0; i < obstacles[j].length; i++){
