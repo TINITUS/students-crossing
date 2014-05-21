@@ -72,7 +72,6 @@ public class Screens {
     }
 
     public static void exitGame() {
-            System.out.println("Exiting...");
-            return;
+            System.out.println("Exiting...");            
     }
 }

@@ -6,6 +6,7 @@
 
 package com.spaceinvaders.game;
 import com.spaceinvaders.game.ConsoleGraphics;
+import com.spaceinvaders.game.Matrix;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
@@ -13,8 +14,8 @@ import java.util.logging.Logger;
  * @author Toshiba
  */
 public class Target {
-    private final int x = Matrix.randomWithRange(1, ConsoleGraphics.getCols()-1);
-    private final int y = Matrix.randomWithRange(1, ConsoleGraphics.getRows()-1);;
+    private final int x;
+    private final int y;
     private final String tex;
     
     /**
@@ -22,6 +23,8 @@ public class Target {
      * @param g - ConsoleGraphics object
      */
     public Target(){
+        x = Matrix.randomWithRange(1, ConsoleGraphics.getCols());
+        y = Matrix.randomWithRange(1, ConsoleGraphics.getRows());
         this.tex = "[ ]";
     } 
     
@@ -29,7 +32,14 @@ public class Target {
      *
      * @param g - ConsoleGraphics object
      */
-    public void render(ConsoleGraphics g){        
+    public void render(ConsoleGraphics g){         
         g.displayText(this.y, this.x, tex);
     }  
+    public int getX(){
+        return x;
+    }
+    
+    public int getY(){
+        return y;
+    }
 }

@@ -8,6 +8,8 @@ package com.spaceinvaders.game;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,47 +18,96 @@ import java.util.Scanner;
 public class Main {
     
     private static ConsoleGraphics g = new ConsoleGraphics();
-
+    private static boolean runing = true;
     /**
      * @param args the command line arguments
      * @throws java.io.IOException
      */
-    public static void main(String[] args) throws IOException {      
+    public static void main(String[] args) throws IOException, InterruptedException {      
         gameMain();
     }
 
-    private static void gameStart() {
-        boolean runing = true;
-        int fps = 0;
-        int lastFpsTime = 0;
-        long lastLoopTime = System.currentTimeMillis();
-        final int TARGET_FPS = 1;
-        final long OPTIMAL_TIME = 1000 / TARGET_FPS;
+    protected static void gameStart() {
+        g.setCols(78);
+        g.setRows(24);
+        g.clearCons();        
+        g.drawFrame();
+        
+        
         
         //init entities - player, obstacles, target
         Player p = new Player();
         Matrix obst = new Matrix();
         Target goal = new Target();
-        
-        
-        //char input;
-        while (runing) {
-            long now = System.currentTimeMillis();
-            long updateLength = now - lastLoopTime;
-            lastLoopTime = now;
-            lastFpsTime += updateLength;
-            fps++;
-            // update our FPS counter if a second has passed since
-            // we last recorded
-            if (lastFpsTime >= OPTIMAL_TIME) {                
-                render(obst, p, goal);                
-                lastFpsTime = 0;
-                fps = 0;
+        //render initially        
+        obst.render(g);
+        goal.render(g);
+        p.render();
+
+        g.displayText(26, 2, "Input move sequence(j - left; i - up; k - right; m - down): ");
+        g.moveTo(27,2);
+        String moveSequence;
+        Scanner scanIn = new Scanner(System.in);            
+        moveSequence = scanIn.nextLine();
+        //loop to update player state as everything else is static
+//        runing = true;
+//        int fps = 0;
+//        int lastFpsTime = 0;
+//        long lastLoopTime = System.currentTimeMillis();
+//        final int TARGET_FPS = 5;
+//        final long OPTIMAL_TIME = 1000 / TARGET_FPS;
+//        
+//        //char input;
+//        while (runing) {
+//            long now = System.currentTimeMillis();
+//            long updateLength = now - lastLoopTime;
+//            lastLoopTime = now;
+//            lastFpsTime += updateLength;
+//            fps++;
+//
+//            if (lastFpsTime >= OPTIMAL_TIME) { 
+//                render(p, moveSequence);                
+//                lastFpsTime = 0;
+//                fps = 0;
+//            }
+//        }
+        for (int i = 0; i < moveSequence.length(); i++) {            
+            char c = moveSequence.charAt(i);     
+            if (c != 'j' && c != 'k' && c != 'i' && c != 'm') {
+                break;              
             }
+            switch (c) {
+                case 'j' : p.moveLeft(); break;
+                case 'k' : p.moveRight(); break;
+                case 'i' : p.moveUp(); break;
+                case 'm' : p.moveDown(); break;                
+            }
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        try {
+            gameMain();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    private static void gameMain(){
+//    private static void render(Player p, String moveSeq) {
+//        //UI render                       
+//        
+//        //entity renders
+//        //goal.render(g);
+//        //obst.render(g);
+//        //p.render();
+//        
+//        
+//        
+//    }
+    
+    protected static void gameMain() throws InterruptedException{
         Screens.printMenu();        
         Scanner input = new Scanner(System.in);
         int choice = input.nextInt();              
@@ -66,7 +117,8 @@ public class Main {
                break;
             case 3:
                 Screens.exitGame();
-                //System.exit(0);
+                ConsoleGraphics.clearCons();
+                System.exit(0);
                 break;
             case 2:
                 gameAbout();
@@ -78,7 +130,7 @@ public class Main {
         }
     }
     
-    private static void gameAbout() {
+    private static void gameAbout() throws InterruptedException {
         Screens.about();
         Scanner input = new Scanner(System.in);
         int choise = input.nextInt();
@@ -88,41 +140,17 @@ public class Main {
                 break;
             default:
                 Screens.exitGame();
-                //System.exit(0);
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                ConsoleGraphics.clearCons();
+                System.exit(0);
                 break;
         }
                 
     }
     
-    private static void render(Matrix obst, Player p, Target goal) {
-        //UI render        
-        g.clearCons();
-        g.setCols(78);
-        g.setRows(24);
-        g.drawFrame();
-        
-        
-        //entity renders
-        goal.render(g);
-        obst.render(g);
-        p.render();
-        
-        g.displayText(26, 2, "Input move sequence(j - left; i - up; k - right; m - down): ");
-        g.moveTo(27,2);
-        String moveSequence;
-        Scanner scanIn = new Scanner(System.in);            
-        moveSequence = scanIn.nextLine();
-        for (int i = 0; i < moveSequence.length(); i++) {
-            char c = moveSequence.charAt(i);     
-            if (c != 'j' && c != 'k' && c != 'i' && c != 'm') {
-                break;
-            }
-            switch (c) {
-                case 'j' : p.moveLeft(); break;
-                case 'k' : p.moveRight(); break;
-                case 'i' : p.moveUp(); break;
-                case 'm' : p.moveDown(); break;
-            }
-        }
-    }        
+            
 }
