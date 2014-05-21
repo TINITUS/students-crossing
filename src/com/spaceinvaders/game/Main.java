@@ -122,5 +122,29 @@ public class Main {
                 
     }
     
-            
+      private static void gameWin() {
+          g.clearCons();
+          Screens.winScreen();
+          Scanner input = new Scanner(System.in);
+        int choise = input.nextInt();
+        switch(choise){
+            case 1:
+          try {
+              gameMain();
+          } catch (InterruptedException ex) {
+              Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+          }
+                break;
+            default:
+                Screens.exitGame();
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                ConsoleGraphics.clearCons();
+                System.exit(0);
+                break;
+        }
+      }
 }

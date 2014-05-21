@@ -44,7 +44,6 @@ public class Screens {
     }
     
         public static void winScreen(){
-        ConsoleGraphics.clearCons();
         System.out.println("##############################################################################");
         System.out.println("#   *   *  *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *    *#");
         System.out.println("# *   *  _  _  __  _  _    __  __   __   ___  ___    __  ____  _  *   *   *  #");

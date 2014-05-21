@@ -29,9 +29,8 @@ public class Collisions {
      * @return 
      */
     public static boolean checkWithTarget(int tX, int tY, int pX, int pY){
-        System.out.print((pX == tX) && (pX == tY));
         boolean checkWithTarget = false;
-        if((pX == tX) && (pX == tY)){
+        if((pX == tX) && (pY == tY)){
             checkWithTarget = true;
         }
         return checkWithTarget;        
