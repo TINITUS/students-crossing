@@ -83,7 +83,7 @@ public class Main {
                 case 'm' : p.moveDown(); break;                
             }
             try {
-                Thread.sleep(500);
+                Thread.sleep(400);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             }

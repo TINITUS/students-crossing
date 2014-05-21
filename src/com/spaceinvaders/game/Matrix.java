@@ -8,7 +8,7 @@ import com.spaceinvaders.game.ConsoleGraphics;
  */
 public class Matrix {
     
-    char[][] obstacles = new char[24][78];    
+    static char[][] obstacles = new char[24][78];    
     /*
     * Constructor for Matrix class
     */

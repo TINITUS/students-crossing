@@ -29,9 +29,9 @@ public class Player {
         return y;
     }
         
-    public void moveUp(){        
-        if(y-1 >= 1){
-            //if no collisions or win cond or 
+    public void moveUp(){  
+        boolean checkWithObstacle = Collisions.checkWithObstacle(Matrix.obstacles, x, y-1 );
+        if((y-1 >= 1) && !checkWithObstacle){             
             clearPlayer();
             this.y-=1;
             render();
@@ -41,7 +41,8 @@ public class Player {
     } 
     
     public void moveDown() {
-        if(y+1 <= ConsoleGraphics.getRows()-1){
+        boolean checkWithObstacle = Collisions.checkWithObstacle(Matrix.obstacles, x, y+1 );
+        if((y+1 <= ConsoleGraphics.getRows()-1)&& !checkWithObstacle){
             clearPlayer();
             this.y+=1;    
             render();
@@ -52,8 +53,9 @@ public class Player {
     } 
     
     public void moveLeft() {
-        if(x-1 >= 1){
-            clearPlayer();
+        boolean checkWithObstacle = Collisions.checkWithObstacle(Matrix.obstacles, x-1, y );
+        if(x-1 >= 1 && !checkWithObstacle){            
+            clearPlayer();            
             this.x--;
             render();
         } else {  
@@ -62,7 +64,8 @@ public class Player {
     } 
     
     public void moveRight() {
-        if(x+1 <= ConsoleGraphics.getCols()-1){
+        boolean checkWithObstacle = Collisions.checkWithObstacle(Matrix.obstacles, x+1, y );
+        if((x+1 <= ConsoleGraphics.getCols()-1) && !checkWithObstacle){
             clearPlayer();
             this.x++;
             render();
